@@ -19,7 +19,7 @@ module.exports = mongoose.model('Photo', schema({
     },
     likes: [{
         type: schema.Types.ObjectId,
-        ref: 'Like'
+        ref: 'User'
     }],
     comments: [{
         type: schema.Types.ObjectId,

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {photoCreate, photoReadAll, captionUpdate, photoDelete, photoComment} = require('../controllers/photos.controller')
+const {photoCreate, photoReadAll, captionUpdate, photoDelete, photoComment, photoLike, photoUnlike} = require('../controllers/photos.controller')
 const {sendUploadToGCS, uploadMem} = require('../middlewares/upload')
 const {authentication} = require('../middlewares/auth')
 
@@ -9,5 +9,8 @@ router.put('/:id',authentication, captionUpdate);
 router.delete('/:id', authentication, photoDelete);
 
 router.post('/:id/comment', authentication, photoComment);
+
+router.post('/:id/like', authentication, photoLike);
+router.post('/:id/unlike', authentication, photoUnlike);
 
 module.exports = router;

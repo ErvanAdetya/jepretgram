@@ -27,7 +27,22 @@ module.exports = {
     photoReadAll: (req, res) => {
         Photo
             .find()
-            .populate('comment')
+            .populate({
+                path:'comments',
+                select: 'user createdAt comment',
+                populate: {
+                    path: 'user',
+                    select: 'name'
+                }
+            })
+            .populate({
+                path:'like',
+                select: 'name'
+            })
+            .populate({
+                path:'user',
+                select: 'name email'
+            })
             .exec()
             .then((photos) => {
                 res.status(200).json({
@@ -43,19 +58,26 @@ module.exports = {
     },
 
     captionUpdate: (req, res) => {
+        let decoded = jwt.verify(req.headers.apptoken, process.env.JWT);
         Photo
             .findById(req.params.id)
             .then((photo) => {
                 if(photo) {
-                    photo.caption = req.body.caption
-                    photo
-                        .save()
-                        .then((Response) => {
-                            res.status(200).json({
-                                message: `Caption successfully updated`,
-                                photo
+                    if (String(photo.user) === decoded.id) {
+                        photo.caption = req.body.caption
+                        photo
+                            .save()
+                            .then((Response) => {
+                                res.status(200).json({
+                                    message: `Caption successfully updated`,
+                                    photo
+                                })
                             })
+                    } else {
+                        res.status(500).json({
+                            message: `You cannot update someone else photo`
                         })
+                    }
                 } else {
                     res.status(500).json({
                         message: `Photo not exist`,
@@ -72,18 +94,25 @@ module.exports = {
     },
 
     photoDelete: (req, res) => {
+        let decoded = jwt.verify(req.headers.apptoken, process.env.JWT);
         Photo
             .findById(req.params.id)
             .then((photo) => {
-                if(photo) {
-                    photo
-                        .remove()
-                        .then((Response) => {
-                            res.status(200).json({
-                                message: `Photo successfully deleted`,
-                                photo
+                if (photo) {
+                    if (String(photo.user) === decoded.id) {
+                        photo
+                            .remove()
+                            .then((Response) => {
+                                res.status(200).json({
+                                    message: `Photo successfully deleted`,
+                                    photo
+                                })
                             })
+                    } else {
+                        res.status(500).json({
+                            message: `You cannot delete someone else photo`
                         })
+                    }
                 } else {
                     res.status(500).json({
                         message: `Photo not exist`,
@@ -141,27 +170,76 @@ module.exports = {
     },
 
     photoLike: (req, res) => {
-        commentCreate: (req, res) => {
-            let decoded = jwt.verify(req.headers.apptoken, process.env.JWT);
-            Photo
-                .findById(req.params.id)
-                .then((photo) => {
-                    if(photo) {
-                        photo.likes.push(decoded.id)
-                        photo.save()
+        let decoded = jwt.verify(req.headers.apptoken, process.env.JWT);
+        Photo
+            .findById(req.params.id)
+            .then((photo) => {
+                if(photo) {
+                    if(String(photo.user) !== decoded.id) {
+                        let liked = photo.likes.indexOf(decoded.id)
+                        if(liked < 0) {
+                            photo.likes.push(decoded.id)
+                            photo.save()
+                            res.status(201).json({
+                                message:'Photo successfully liked!',
+                                photo
+                            })
+                        } else {
+                            res.status(500).json({
+                                message:'You cannot like same photo fro twice!'
+                            })
+                        }
                     } else {
                         res.status(500).json({
-                            message: `Photo not exist`,
-                            err
+                            message:'You cannot like your own photo!'
                         })
                     }
-                })
-                .catch((err) => {
+                } else {
                     res.status(500).json({
-                        message: `Error adding comment`,
+                        message: `Photo not exist`,
                         err
                     })
+                }
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: `Error liking photos`,
+                    err
                 })
-        }
+            })
+    },
+
+    photoUnlike: (req, res) => {
+        let decoded = jwt.verify(req.headers.apptoken, process.env.JWT);
+        Photo
+            .findById(req.params.id)
+            .then((photo) => {
+                if(photo) {
+                    let index = photo.likes.indexOf(decoded.id)
+                    if(index >= 0) {
+                        photo.likes.splice(index, 1)
+                        photo.save()
+                        res.status(200).json({
+                            message: `Photo successfully unliked!`,
+                            photo
+                        })
+                    } else {
+                        res.status(500).json({
+                            message:'You must like to unlike this photo!'
+                        })
+                    }
+                } else {
+                    res.status(500).json({
+                        message: `Photo not exist`,
+                        err
+                    })
+                }
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: `Error liking photos`,
+                    err
+                })
+            })
     }
 }
