@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tokyo-dream-197906",
+  "private_key_id": "422fe9287c28eac3b939af39695eb4854cd500a7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCMR1t5NQ7rs2+o\njcyPvNaAmTSHSzzDH38I6H36qt4gMST9/E1Q6ByyvLpORdVm47KrCq2G6kmL+6lX\nbg/I4MYRLEMoQUAMouNHn5AwC/A9ggNNy4hzSlMThkxzL6jj+5lfHKs8jGyi4O1Z\nBTXOSZbX6kM4bIs9eRWRR7PRsY1MlKRYCVVS2hjUOl0tNoes5N7h2v+PZHL1GETe\nMNVDwjZFlXWGwg6Nh3Essjnxc4j8wf4BKRzuF6R7omvRqCjSjwXJd6Rh37D5Xdov\nLnwiXRQKIOEeejw9cP85Q1dkHI2nq/T3yIp2LvRgvkC9DMh/I30LiiDyO/nb1z+r\nXc2AY9xtAgMBAAECggEABhPIVXu0Ogdj0L5V7Ks+csNQaIUcrIpmh0UFQjEZXvUq\nGFvQIK9xoNe2zZHOcT7vnGPhySzIw2kDeN9yjR4ZzqAnh6yuAO4koRN7XG2D+rIx\ngPMOpgoEB95DXSElNL1Pc3SrQXwG79aFSdxFLLr470E9qMnhDWh7w/fChVTnHXhp\nqeokIgOqEW6xDxzq9fm19KasSwOMAwZlsOa0GHujavi66kQgr0PdA7blCfQOhCpK\ntUPKXOecjt4ZPRi0DTI9Fstn4tBj8Sc0Al67ksbcrWPX2CKmt4Y1agMt7bFHTaug\n1wCKXEJ3JNRt5XEkQT4Sqjtf1oRt8K7KC5uWJz41kQKBgQDDR6/hLqHVfUAZ/Jne\n1qFLFUD4z0jOcxunzOlEWBubfpGH4pRSQtvKiSnYXjUVJ1OHEXoAFWDlu8amwGXk\no+MiB3apSxzVZ0x0NI+9rLa75Lvm/vasGA9mnQunZa6c59lKtNVLxhG6gRODnDw5\nFuPbUBWe9sJUBkSoad2QnBO9MQKBgQC35Y+0uv5NYmezWYx9qGCSTSo0ZueMM6/d\nK5JyuJi0pQ4U/5/SHwbIPZwauC4ob6FfvH5BJItsokU1MS6v8ClCrPkwFf4M3TrK\ntXbrObf5xBrc9O8eyxDE4jjR4oE8bLJ/d3WXHMc9f64Zfa5NasnoWUjoJg3Kyqog\nM+WPNHtT/QKBgD7GsNem8gd7eDviZGSqgrdsYbKakEEt59oNmX+LA3T9PzN7t0qq\ni5WUeos/3birJ8Ln71xPgxLXRokcmKTjuoSZ+Z96sg44Yu+IZh0HhMbqRS2BETNJ\nmMnX+oMZwQRX1BacA2WUiuZ10BwjAYkovp8mI40yrk3spe2t+rgeNIpBAoGAeS7C\no1NyTyZgtdR1+zxg3ygQftWtEjvhUTrsV8MDhk8aV4YYGIwvmPbYjtb+O9FMI12A\nSYc+hYjtWF8fp/r4BaMc1q43atzCaGBqjBnN/b5YAXE6vi0M0OFOlijQBzSN7+eV\nys3BEeq4nL2whf2wLffgTnL9NbyVnYD1bogkGTUCgYBUVlRyx04pzkceQr7Cogl8\nEhjFZqUxE/K8N+gDQ3oGsBQRlz/2yCuXxACD5JQBr067N68w7KP7+dEn4a3BE8OU\nTOrlyN8AxryX86hD/l5yxQJ/5dbwmv5bjnqHtvUIgxiZqTAl8VzZCfZNwLMbMy9J\nnHfrvRrZKf7UhfA++m7uMQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "storage@tokyo-dream-197906.iam.gserviceaccount.com",
+  "client_id": "109726419985693494647",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/storage%40tokyo-dream-197906.iam.gserviceaccount.com"
+}
