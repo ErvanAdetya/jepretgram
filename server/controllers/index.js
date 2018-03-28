@@ -14,7 +14,11 @@ module.exports = {
                     res.status(200).json({
                         status: true,
                         message: `Login successfull`,
-                        apptoken: jwt.sign({ id: user._id }, process.env.JWT)
+                        apptoken: jwt.sign({ id: user._id }, process.env.JWT),
+                        user: {
+                            name: user.name,
+                            email: user.email
+                        }
                     })
                 }
             } else {

@@ -10,10 +10,10 @@ module.exports = {
             user: decoded.id,
             caption: req.body.caption,
         }).save()
-        .then((user) => {
+        .then((photo) => {
             res.status(201).json({
             message:'Photo successfully created!',
-            user
+            photo
             })
         })
         .catch((err) => {
